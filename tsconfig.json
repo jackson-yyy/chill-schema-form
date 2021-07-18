@@ -22,7 +22,7 @@
     "resolveJsonModule": true
   },
   "include": [
-    "src"
+    "packages"
   ],
   "exclude": [
     "node_modules"

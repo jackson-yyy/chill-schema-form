@@ -1,7 +1,7 @@
 import path from 'path'
 
 import babel from '@rollup/plugin-babel'
-import resolve from '@rollup/plugin-node-resolve'
+import nodeResolve from '@rollup/plugin-node-resolve'
 import ts from 'rollup-plugin-typescript2'
 import scss from 'rollup-plugin-scss'
 import commonjs from 'rollup-plugin-commonjs'
@@ -11,22 +11,35 @@ import filesize from 'rollup-plugin-filesize'
 import alias from 'rollup-plugin-alias'
 import { terser } from 'rollup-plugin-terser'
 
-const resolvePath = name => path.resolve(__dirname, name)
+/* get path from root */
+const rootResolve = name => path.resolve(__dirname, name)
 const extensions = ['.js', '.ts', '.tsx', '.vue']
-const pkgName = 'ChillSchemaForm'
 
+/*package variable*/
+const packageDir = process.env.TARGET_PATH
+const resolve = p => path.resolve(packageDir, p)
+const pkg = require(resolve('package.json'))
+const packageOptions = pkg.buildOptions || {}
+/*package name*/
+const pkgName = packageOptions.name
+const baseName = path.basename(packageDir)
+
+/*config*/
 const outputConfigs = {
 	'esm-bundler': {
-		file: resolvePath(`dist/${pkgName}.esm-bundler.js`),
+		file: resolve(`dist/${pkgName}.esm-bundler.js`),
 		format: 'es'
 	},
 	'cjs': {
-		file: resolvePath(`dist/${pkgName}.cjs.js`),
+		file: resolve(`dist/${pkgName}.cjs.js`),
 		format: 'cjs'
+	},
+	'umd': {
+		file: resolve(`dist/${pkgName}.umd.js`),
+		format: 'umd'
 	}
 }
-
-const defaultFormats = ['esm-bundler', 'cjs']
+const defaultFormats = ['esm-bundler', 'cjs', 'umd']
 const packageConfigs = defaultFormats
 
 const createConfig = (format, output) => {
@@ -35,7 +48,7 @@ const createConfig = (format, output) => {
 		process.exit(1)
 	}
 	return {
-		input: 'src/index.ts',
+		input: resolve(`lib/${baseName}`),
 		external: ['vue'],
 		plugins: [
 			peerDepsExternal(),
@@ -43,7 +56,7 @@ const createConfig = (format, output) => {
 				css: true
 			}),
 			ts({
-				tsconfig: resolvePath('./tsconfig.json'),
+				tsconfig: rootResolve('tsconfig.json'),
 				extensions
 			}),
 			commonjs(),
@@ -54,28 +67,29 @@ const createConfig = (format, output) => {
 					'@babel/preset-typescript'
 				],
 				plugins: [
-					['@babel/plugin-proposal-class-properties', { loose: true }],
 					['@babel/plugin-proposal-decorators', { legacy: true }],
 					['@babel/plugin-transform-runtime']
-				]
+				],
+				babelHelpers: 'runtime'
 			}),
-			resolve({
+			nodeResolve({
 				extensions
 			}),
 			scss(),
 			filesize(),
 			alias({
-				'@': resolvePath('src')
+				'@': rootResolve('src'),
+				'@core': rootResolve('packages/core'),
+				'@view': rootResolve('packages/view')
 			}),
 			terser()
 		],
 		output: {
 			...output,
 			sourcemap: false,
-			name: 'ChillSchemaForm'
-		},
+			name: pkgName
+		}
 	}
 }
-
 
 export default packageConfigs.map(format => createConfig(format, outputConfigs[format]))
