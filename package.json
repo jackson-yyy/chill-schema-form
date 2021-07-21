@@ -8,9 +8,6 @@
     "packages/lib/render/*"
   ],
   "version": "1.0.0",
-  "main": "dist/ChillSchemaForm.umd.js",
-  "module": "dist/ChillSchemaForm.esm-bundler.js",
-  "types": "dist/index.d.ts",
   "repository": "git@github.com:jackson-yyy/chill-schema-form.git",
   "license": "MIT",
   "scripts": {
@@ -35,6 +32,7 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
+    "@types/node": "^16.4.0",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
     "@vue/compiler-sfc": "^3.1.4",

@@ -2,7 +2,7 @@ const chalk = require('chalk')
 const execa = require('execa')
 const args = require('minimist')(process.argv.slice(2))
 const targets = args._
-const { packages: allTargets } = require('./utils')
+const { packages: allTargets, getTarget } = require('./utils')
 
 async function run () {
 	console.log(chalk.bold(chalk.yellow(`start run build`)));
@@ -21,7 +21,7 @@ async function run () {
 async function buildAll (targets) {
 	const ret = []
 	for (const target of targets) {
-		const p = Promise.resolve().then(() => build(target))
+		const p = Promise.resolve().then(() => build(getTarget(target)))
 		ret.push(p)
 	}
 

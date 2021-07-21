@@ -1,17 +1,20 @@
 {
   "name": "@chill-schema-form/vue2-render",
   "version": "1.0.0",
+  "main": "dist/vue2-render.umd.js",
+  "module": "dist/vue2-render.esm-bundler.js",
+  "types": "dist/vue2-render.d.ts",
   "description": "> TODO: description",
   "author": "jackson <247955056@qq.com>",
   "homepage": "https://github.com/jackson-yyy/chill-schema-form#readme",
   "license": "ISC",
-  "main": "lib/vue2-render.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -19,6 +22,9 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "buildOptions": {
+    "name": "vue2-render"
   },
   "bugs": {
     "url": "https://github.com/jackson-yyy/chill-schema-form/issues"
