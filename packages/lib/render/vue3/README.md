@@ -1,11 +1,11 @@
-# `vue2`
+# `vue3-render`
 
 > TODO: description
 
 ## Usage
 
 ```
-const vue2 = require('vue2');
+const vue3Render = require('vue3-render');
 
 // TODO: DEMONSTRATE API
 ```
