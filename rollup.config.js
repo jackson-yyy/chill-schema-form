@@ -22,7 +22,6 @@ const pkg = require(resolve('package.json'))
 const packageOptions = pkg.buildOptions || {}
 /* package name */
 const pkgName = packageOptions.name
-const baseName = path.basename(packageDir)
 
 /* config */
 const outputConfigs = {
@@ -48,7 +47,7 @@ const createConfig = (format, output) => {
     process.exit(1)
   }
   return {
-    input: resolve(`lib/${baseName}`),
+    input: resolve(`lib/${pkgName}.js`),
     external: ['vue'],
     plugins: [
       peerDepsExternal(),
@@ -58,6 +57,9 @@ const createConfig = (format, output) => {
       ts({
         tsconfig: rootResolve('tsconfig.json'),
         extensions,
+        tsconfigOverride: {
+          include: [packageDir],
+        },
       }),
       commonjs(),
       babel({
