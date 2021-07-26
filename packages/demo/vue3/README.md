@@ -1,11 +1,24 @@
-# `demo-vue3`
+# vue3
 
-> TODO: description
-
-## Usage
-
+## Project setup
 ```
-const demoVue3 = require('demo-vue3');
-
-// TODO: DEMONSTRATE API
+yarn install
 ```
+
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -37,7 +37,6 @@
     "@typescript-eslint/parser": "^4.28.4",
     "@vue/compiler-sfc": "^3.1.4",
     "chalk": "^4.1.1",
-    "cz-lerna-changelog": "^2.0.3",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
