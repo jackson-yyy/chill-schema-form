@@ -1,20 +1,13 @@
 {
-  "name": "@chill-schema-form/vue3-render",
+  "name": "@chill-schema-form/stylelint-config",
   "version": "1.0.0",
-  "main": "dist/vue3-render.umd.js",
-  "module": "dist/vue3-render.esm-bundler.js",
-  "types": "dist/vue3-render.d.ts",
   "description": "> TODO: description",
   "author": "jackson <247955056@qq.com>",
   "homepage": "https://github.com/jackson-yyy/chill-schema-form#readme",
   "license": "ISC",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
+  "main": "index.js",
   "files": [
-    "lib",
-    "dist"
+    "index.js"
   ],
   "repository": {
     "type": "git",
@@ -23,15 +16,13 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "buildOptions": {
-    "name": "vue3-render"
-  },
   "bugs": {
     "url": "https://github.com/jackson-yyy/chill-schema-form/issues"
   },
   "devDependencies": {
-    "@chill-schema-form/eslint-config": "^1.0.0",
-    "@chill-schema-form/stylelint-config": "^1.0.0",
-    "lint-staged": "^11.1.1"
+    "lint-staged": "^11.1.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0"
   }
 }

@@ -1,14 +1,19 @@
 ls:
   packages/*:
+    .d.ts: camelCase | kebabcase
     .ts: camelCase
     .tsx: PascalCase
     .spec.ts: camelCase
     .config.ts: camelCase
     .less: camelCase
     .vue: PascalCase
-    .md: PascalCase
 
   scripts:
     .ts: camelCase
     .config.ts: camelCase
     .svg: kebab-case
+
+ignore:
+  - packages/**/node_modules
+  - packages/**/CHANGELOG.md
+  - packages/**/README.md
