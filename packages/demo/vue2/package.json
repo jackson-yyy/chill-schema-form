@@ -1,41 +1,28 @@
 {
-  "name": "demo-vue2",
-  "version": "0.1.0",
+  "name": "@chill-schema-form/demo-vue2",
+  "version": "0.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "lint": "npm run lint:es && npm run lint:style",
+    "lint:es": "eslint ./src --ext .vue,.js,.ts,tsx --fix",
+    "lint:style": "stylelint './src/**/*.less' --fix",
+    "precommit": "lint-staged --no-stash"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "@chill-schema-form/eslint-config": "^1.0.0",
+    "eslint": "^7.31.0",
+    "lint-staged": "^11.1.1",
+    "typescript": "^4.3.2",
+    "vite": "^2.4.3",
+    "vite-plugin-vue2": "^1.7.3",
+    "vue": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "vue-tsc": "^0.0.24"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  "peerDependencies": {
+    "vue": "^2.6.14",
+    "vue-template-compiler": "^2.6.14"
+  }
 }

@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
@@ -13,5 +14,7 @@ module.exports = {
   rules: {
     semi: [2, 'never'],
     'arrow-parens': ['error', 'as-needed'],
+
+    'import/no-extraneous-dependencies': 0,
   },
 }
