@@ -15,6 +15,7 @@
     "dev": "ts-node scripts/dev.ts",
     "build": "ts-node scripts/build.ts",
     "lint": "lerna run lint",
+    "prepare": "lerna bootstrap",
     "precommit": "ls-lint && lerna run precommit"
   },
   "devDependencies": {
