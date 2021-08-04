@@ -1,6 +1,7 @@
 {
   "name": "@chill-schema-form/stylelint-config",
   "version": "1.0.0",
+  "private": true,
   "description": "> TODO: description",
   "author": "jackson <247955056@qq.com>",
   "homepage": "https://github.com/jackson-yyy/chill-schema-form#readme",

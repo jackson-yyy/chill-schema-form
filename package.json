@@ -3,19 +3,20 @@
   "private": true,
   "workspaces": [
     "configs/*",
-    "packages/*",
-    "packages/demo/*",
-    "packages/lib/*",
-    "packages/lib/render/*"
+    "demo/*",
+    "packages/*"
   ],
   "version": "1.0.0",
   "repository": "git@github.com:jackson-yyy/chill-schema-form.git",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node scripts/dev.ts",
-    "build": "ts-node scripts/build.ts",
+    "build": "ts-node scripts/build/index.ts",
+    "dev:vue2": "pnpm dev --filter @chill-schema-form/demo-vue2",
+    "dev:vue3": "pnpm dev --filter @chill-schema-form/demo-vue3",
+    "clear": "rimraf node_modules && lerna clean --yes",
     "lint": "lerna run lint",
-    "prepare": "lerna bootstrap",
+    "bts": "pnpm clear && lerna bootstrap",
     "precommit": "ls-lint && lerna run precommit"
   },
   "devDependencies": {
@@ -29,8 +30,11 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@ls-lint/ls-lint": "^1.10.0",
     "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
-    "@types/node": "^16.4.0",
+    "@types/fs-extra": "^9.0.12",
+    "@types/node": "^16.4.6",
+    "@types/rollup-plugin-peer-deps-external": "^2.2.1",
     "chalk": "^4.1.1",
     "execa": "^5.1.1",
     "fs-extra": "^10.0.0",
@@ -39,20 +43,18 @@
     "lint-staged": "^11.0.1",
     "minimist": "^1.2.5",
     "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
     "rollup": "^2.53.1",
-    "rollup-plugin-alias": "^2.2.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^9.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-scss": "^3.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
-    "rollup-plugin-vue": "^6.0.0",
     "ts-node": "^10.1.0",
+    "tslib": "^2.3.0",
     "typescript": "^4.3.5"
   },
-  "peerDependencies": {},
-  "dependencies": {},
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"

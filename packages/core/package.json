@@ -9,11 +9,10 @@
   "homepage": "https://github.com/jackson-yyy/chill-schema-form#readme",
   "license": "ISC",
   "directories": {
-    "lib": "lib",
+    "src": "src",
     "test": "__tests__"
   },
   "files": [
-    "lib",
     "dist"
   ],
   "repository": {
@@ -21,7 +20,7 @@
     "url": "git+https://github.com/jackson-yyy/chill-schema-form.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "rollup -c"
   },
   "buildOptions": {
     "name": "core"

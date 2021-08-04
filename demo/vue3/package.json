@@ -1,27 +1,28 @@
 {
   "name": "@chill-schema-form/demo-vue3",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "lint": "npm run lint:es && npm run lint:style",
     "lint:es": "eslint src --ext .vue,.js,.ts,tsx --fix",
-    "lint:style": "stylelint 'src/**/*.less' --fix",
+    "lint:style": "stylelint 'src/**/*.less' --fix --allow-empty-input",
     "precommit": "lint-staged --no-stash"
   },
-  "peerDependencies": {
+  "dependencies": {
     "vue": "^3.0.5"
   },
   "devDependencies": {
     "@chill-schema-form/eslint-config": "^1.0.0",
+    "@chill-schema-form/stylelint-config": "^1.0.0",
     "@vitejs/plugin-vue": "^1.2.5",
     "@vue/compiler-sfc": "^3.0.5",
     "eslint": "^7.31.0",
     "lint-staged": "^11.0.1",
     "typescript": "^4.3.2",
     "vite": "^2.4.3",
-    "vue": "^3.0.5",
     "vue-tsc": "^0.0.24"
   }
 }
