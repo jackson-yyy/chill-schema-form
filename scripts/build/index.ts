@@ -1,45 +1,46 @@
-
-import { join } from "path";
-import { getRollupConfig } from './base.config';
+import { join } from 'path'
 import { rollup, RollupOptions, OutputOptions } from 'rollup'
-import { remove } from "fs-extra";
-import chalk from "chalk";
+import { remove } from 'fs-extra'
+import chalk from 'chalk'
+import { getRollupConfig } from './base.config'
 
 const projectRoot = join(__dirname, '../..')
 const packagesRoot = join(projectRoot, 'packages')
 
-function getPkgRoot (pkg = '') {
+function getPkgRoot(pkg = '') {
   return join(packagesRoot, pkg)
 }
 
-async function clean (pkg = '', distPath = 'dist'): Promise<void> {
+async function clean(pkg = '', distPath = 'dist'): Promise<void> {
   const dist = join(getPkgRoot(pkg), distPath)
   console.log(chalk.yellow(`cleaning ${dist}`))
   await remove(dist)
-    .then(() => console.log(chalk.yellow(`cleaning ${dist}`)))
-    .catch(err => console.log(chalk.red(err.msg)))
+  console.log(chalk.yellow(`cleaning ${dist}`))
 }
 
-export async function build({
+async function build({
   pkg = '',
-  iifeName = ''
+  iifeName = '',
 }, config: RollupOptions = {}): Promise<void> {
-  const {output: outputConfig, ...inputConfig} = getRollupConfig(getPkgRoot(pkg), iifeName, config)
+  const {
+    output: outputConfig,
+    ...inputConfig
+  } = getRollupConfig(getPkgRoot(pkg), iifeName, config)
 
-  const bundle = await rollup(inputConfig);
+  const bundle = await rollup(inputConfig)
 
   console.log(chalk.yellow(`building package:${pkg}`));
-  (outputConfig as OutputOptions[]).forEach(async (outputOptions) => {
-    await clean(pkg)
-  
-    await bundle.write(outputOptions)
-      .catch(err => console.log(chalk.red(err.msg)))
-  
-    console.log(`Success: ${outputOptions.file}`);
+  (outputConfig as OutputOptions[]).forEach(async outputOptions => {
+    try {
+      await clean(pkg)
+      await bundle.write(outputOptions)
+      console.log(`Success: ${outputOptions.file}`)
+    } catch (error) {
+      console.log(chalk.red(error.msg))
+    }
   })
-      
 }
 
-build({pkg: 'core', iifeName: 'ChillSchemaFormCore'})
-build({pkg: 'vue2-render', iifeName: 'ChillSchemaFormVue2Render'})
-build({pkg: 'vue3-render', iifeName: 'ChillSchemaFormVue3Render'})
+build({ pkg: 'core', iifeName: 'ChillSchemaFormCore' })
+build({ pkg: 'vue2-render', iifeName: 'ChillSchemaFormVue2Render' })
+build({ pkg: 'vue3-render', iifeName: 'ChillSchemaFormVue3Render' })

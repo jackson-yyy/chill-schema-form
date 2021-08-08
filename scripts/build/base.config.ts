@@ -19,11 +19,11 @@ export function getOutputConfig(dirPath = '', name = ''): OutputOptions[] {
     file: path.resolve(dirPath, `dist/index.${format}.js`),
     format,
     name,
-    exports: 'named'
+    exports: 'named',
   }))
 }
 
-export function getRollupConfig(dirPath = '', name = '', config: RollupOptions = {}): RollupOptions  {
+export function getRollupConfig(dirPath = '', name = '', config: RollupOptions = {}): RollupOptions {
   const { plugins = [], ...others } = config
   return {
     input: path.resolve(dirPath, 'src/index.ts'),
@@ -38,7 +38,7 @@ export function getRollupConfig(dirPath = '', name = '', config: RollupOptions =
         babelHelpers: 'runtime',
       }),
       nodeResolve({
-        extensions
+        extensions,
       }),
       scss(),
       filesize(),

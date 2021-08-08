@@ -21,6 +21,7 @@
     "url": "https://github.com/jackson-yyy/chill-schema-form/issues"
   },
   "devDependencies": {
+    "@chill-schema-form/eslint-config": "^1.0.0",
     "lint-staged": "^11.1.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
