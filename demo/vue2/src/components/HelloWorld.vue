@@ -53,7 +53,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent, ref } from '@vue/composition-api'
+
+export default defineComponent({
   name: 'HelloWorld',
   props: {
     msg: {
@@ -61,12 +63,13 @@ export default {
       required: true,
     },
   },
-  data() {
+  setup() {
+    const count = ref(0)
     return {
-      count: 0,
+      count,
     }
   },
-}
+})
 </script>
 
 <style scoped>

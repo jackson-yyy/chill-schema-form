@@ -17,3 +17,4 @@ ignore:
   - packages/**/node_modules
   - packages/**/CHANGELOG.md
   - packages/**/README.md
+  - packages/**/dist
