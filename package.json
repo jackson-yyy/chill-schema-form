@@ -20,13 +20,14 @@
     "precommit": "ls-lint && lerna run precommit"
   },
   "devDependencies": {
-    "@chill-schema-form/eslint-config": "workspace:*",
     "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/plugin-proposal-decorators": "^7.14.5",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-typescript": "^7.14.5",
+    "@chill-schema-form/eslint-config": "file:../../configs/eslint-config",
+    "@chill-schema-form/stylelint-config": "file:../../configs/stylelint-config",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@ls-lint/ls-lint": "^1.10.0",
@@ -36,12 +37,20 @@
     "@types/fs-extra": "^9.0.12",
     "@types/node": "^16.4.6",
     "@types/rollup-plugin-peer-deps-external": "^2.2.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "@vitejs/plugin-vue": "^1.2.5",
+    "@vue/compiler-sfc": "^3.0.5",
     "chalk": "^4.1.1",
+    "eslint": "^7.31.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.14.0",
     "execa": "^5.1.1",
     "fs-extra": "^10.0.0",
     "husky": "^7.0.0",
     "lerna": "^4.0.0",
-    "lint-staged": "^11.0.1",
+    "lint-staged": "^11.1.1",
     "minimist": "^1.2.5",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
@@ -51,13 +60,28 @@
     "rollup-plugin-scss": "^3.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
     "ts-node": "^10.1.0",
     "tslib": "^2.3.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.2",
+    "vite": "^2.4.3",
+    "vite-plugin-vue2": "^1.7.3",
+    "vue-tsc": "^0.0.24"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-lerna-changelog"
     }
+  },
+  "dependencies": {
+    "@chill-schema-form/core": "file:packages/core",
+    "@chill-schema-form/demo-vue2": "file:demo/vue2",
+    "@chill-schema-form/demo-vue3": "file:demo/vue3",
+    "@chill-schema-form/eslint-config": "file:configs/eslint-config",
+    "@chill-schema-form/stylelint-config": "file:configs/stylelint-config",
+    "@chill-schema-form/vue2-render": "file:packages/vue2-render",
+    "@chill-schema-form/vue3-render": "file:packages/vue3-render"
   }
 }
