@@ -1,0 +1,8 @@
+{
+  "extend": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "declaration": true
+  }
+}

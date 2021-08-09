@@ -1,9 +1,9 @@
 {
-  "name": "@chill-schema-form/vue3-render",
+  "name": "@chill-schema-form/vue-render",
   "version": "1.0.0",
-  "main": "dist/vue3-render.umd.js",
-  "module": "dist/vue3-render.esm-bundler.js",
-  "types": "dist/vue3-render.d.ts",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "description": "> TODO: description",
   "author": "jackson <247955056@qq.com>",
   "homepage": "https://github.com/jackson-yyy/chill-schema-form#readme",
@@ -24,9 +24,21 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "buildOptions": {
-    "name": "vue3-render"
+    "name": "vue-render"
   },
   "bugs": {
     "url": "https://github.com/jackson-yyy/chill-schema-form/issues"
+  },
+  "dependencies": {
+    "vue-demi": "latest"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
   }
 }

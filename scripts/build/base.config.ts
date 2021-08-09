@@ -1,18 +1,25 @@
 import babel from '@rollup/plugin-babel'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import ts from 'rollup-plugin-typescript2'
-import scss from 'rollup-plugin-scss'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import filesize from 'rollup-plugin-filesize'
 import { terser } from 'rollup-plugin-terser'
 
-import { ModuleFormat, RollupOptions, OutputOptions } from 'rollup'
+import { ModuleFormat, RollupOptions, OutputOptions, Plugin } from 'rollup'
 import path from 'path'
 
 const extensions = ['.js', '.ts', '.tsx', '.vue']
 
 const outputFormats: ModuleFormat[] = ['esm', 'cjs', 'umd']
+
+export function getBabelConfig({ presets = [], plugins = [] }: { presets?: any[]; plugins?: any[] }) {
+  return babel({
+    exclude: 'node_modules/**',
+    presets: ['@babel/preset-env', '@babel/preset-typescript', ...presets],
+    plugins,
+    extensions,
+  })
+}
 
 export function getOutputConfig(dirPath = '', name = ''): OutputOptions[] {
   return outputFormats.map(format => ({
@@ -28,22 +35,14 @@ export function getRollupConfig(dirPath = '', name = '', config: RollupOptions =
   return {
     input: path.resolve(dirPath, 'src/index.ts'),
     plugins: [
-      peerDepsExternal() as Plugin,
-      ts(),
-      commonjs(),
-      babel({
-        exclude: 'node_modules/**',
-        presets: ['@babel/preset-env', '@babel/preset-typescript'],
-        plugins: [['@babel/plugin-proposal-decorators', { legacy: true }], ['@babel/plugin-transform-runtime']],
-        babelHelpers: 'runtime',
-      }),
       nodeResolve({
         extensions,
       }),
-      scss(),
-      filesize(),
-      terser(),
+      peerDepsExternal() as unknown as Plugin,
+      commonjs(),
       ...plugins,
+      // terser(),
+      filesize(),
     ],
     output: getOutputConfig(dirPath, name),
     ...others,

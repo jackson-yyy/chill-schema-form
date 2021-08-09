@@ -1,9 +1,9 @@
 {
   "name": "@chill-schema-form/core",
   "version": "1.0.0",
-  "main": "dist/core.umd.js",
-  "module": "dist/core.esm-bundler.js",
-  "types": "dist/core.d.ts",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm-bundler.js",
+  "types": "dist/index.d.ts",
   "description": "> TODO: description",
   "author": "jackson <247955056@qq.com>",
   "homepage": "https://github.com/jackson-yyy/chill-schema-form#readme",

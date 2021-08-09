@@ -1,21 +1,21 @@
 <template>
   <section>
-    <img
-      alt="Vue logo"
-      src="./assets/logo.png"
-    >
+    <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="xx" />
+    <FormRender />
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import HelloWorld from './components/HelloWorld.vue'
+import { FormRender } from '@chill-schema-form/vue-render'
 
 export default defineComponent({
   name: 'App',
   components: {
     HelloWorld,
+    FormRender,
   },
 })
 </script>
