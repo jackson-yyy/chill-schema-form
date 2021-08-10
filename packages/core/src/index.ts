@@ -1,3 +1,1 @@
-export default function core() {
-  // TODO
-}
+export * from './validate/index'

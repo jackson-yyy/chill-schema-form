@@ -34,13 +34,20 @@
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-typescript": "^8.2.5",
     "@types/fs-extra": "^9.0.12",
     "@types/node": "^16.4.6",
     "@types/rollup-plugin-peer-deps-external": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
     "@vitejs/plugin-vue": "^1.2.5",
+    "@vitejs/plugin-vue-jsx": "^1.1.7",
+    "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/compiler-sfc": "^3.0.5",
+    "@vue/test-utils": "^1.2.2",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
     "chalk": "^4.1.1",
     "eslint": "^7.31.0",
     "eslint-plugin-import": "^2.23.4",
@@ -55,11 +62,12 @@
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.53.1",
+    "rollup-plugin-dts": "^3.0.2",
     "rollup-plugin-filesize": "^9.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-scss": "^3.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-vue": "^6.0.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
@@ -68,7 +76,9 @@
     "typescript": "^4.3.2",
     "vite": "^2.4.3",
     "vite-plugin-vue2": "^1.7.3",
-    "vue-tsc": "^0.0.24"
+    "vue-jest": "^3.0.7",
+    "vue-tsc": "^0.0.24",
+    "vue-tsx-support": "^3.2.0"
   },
   "config": {
     "commitizen": {
@@ -76,12 +86,10 @@
     }
   },
   "dependencies": {
-    "@chill-schema-form/core": "file:packages/core",
-    "@chill-schema-form/demo-vue2": "file:demo/vue2",
-    "@chill-schema-form/demo-vue3": "file:demo/vue3",
-    "@chill-schema-form/eslint-config": "file:configs/eslint-config",
-    "@chill-schema-form/stylelint-config": "file:configs/stylelint-config",
-    "@chill-schema-form/vue2-render": "file:packages/vue2-render",
-    "@chill-schema-form/vue3-render": "file:packages/vue3-render"
+    "@chill-schema-form/core": "file:packages\\core",
+    "@chill-schema-form/demo-vue2": "file:demo\\vue2",
+    "@chill-schema-form/demo-vue3": "file:demo\\vue3",
+    "@chill-schema-form/eslint-config": "file:configs\\eslint-config",
+    "@chill-schema-form/stylelint-config": "file:configs\\stylelint-config"
   }
 }

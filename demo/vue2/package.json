@@ -12,6 +12,7 @@
     "precommit": "lint-staged --no-stash"
   },
   "dependencies": {
+    "@chill-schema-form/vue-render": "^1.0.0",
     "@vue/composition-api": "^1.0.5",
     "vue": "^2.6.14",
     "vue-template-compiler": "^2.6.14"
