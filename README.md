@@ -3,7 +3,7 @@
 ## Development
 
 ```
-yarn prepare or lerna bootstrap
+npm run bts
 ```
 
 **为什么使用pnpm workspace而不是yarn workspace管理依赖？**
