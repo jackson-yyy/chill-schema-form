@@ -21,7 +21,10 @@
     "url": "git+https://github.com/jackson-yyy/chill-schema-form.git"
   },
   "scripts": {
-    "postinstall": "ts-node scripts/postinstall.ts"
+    "postinstall": "ts-node scripts/postinstall.ts",
+    "switch:vue3": "vue-demi-switch 3",
+    "switch:vue2": "vue-demi-switch 2 vue2",
+    "fix:vue": "vue-demi-fix"
   },
   "buildOptions": {
     "name": "vue-render"
@@ -40,5 +43,10 @@
     "@vue/composition-api": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "vue": "^3.0.5",
+    "vue2": "npm:vue@~2.6.14",
+    "@vue/composition-api": "^1.0.0-rc.1"
   }
 }

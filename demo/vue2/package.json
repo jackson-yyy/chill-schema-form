@@ -2,6 +2,12 @@
   "name": "@chill-schema-form/demo-vue2",
   "version": "0.0.0",
   "private": true,
+  "workspaces": {
+    "nohoist": [
+      "vue",
+      "vue-template-compiler"
+    ]
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

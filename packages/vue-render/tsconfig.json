@@ -3,9 +3,5 @@
   "include": ["src/*"],
   "compilerOptions": {
     "jsx": "preserve",
-    "jsxFactory": "VueTsxSupport",
-    "outDir": "dist",
-    "declaration": true,
-    "declarationDir": "types"
   }
 }

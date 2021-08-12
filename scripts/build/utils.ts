@@ -22,16 +22,17 @@ export async function build(
   { pkg = '', output = 'index.js', clean = true },
   config: RollupOptions = {},
 ): Promise<void> {
-  const { output: outputConfig, ...inputConfig } = getRollupConfig({ pkgRoot: getPkgRoot(pkg), output }, config)
+  const { output: outputConfigs, ...inputConfig } = getRollupConfig({ pkgRoot: getPkgRoot(pkg), output }, config)
+  ;([outputConfigs] as OutputOptions[]).forEach(async outputConfig => {
+    try {
+      clean && cleanDist(pkg)
+      const bundle = await rollup(inputConfig)
 
-  try {
-    clean && cleanDist(pkg)
-    const bundle = await rollup(inputConfig)
-
-    console.log(chalk.yellow(`building package:${pkg}`))
-    await bundle.write(outputConfig as OutputOptions)
-    console.log(`Success: ${(outputConfig as OutputOptions).file}`)
-  } catch (error) {
-    console.log(chalk.red(error.msg))
-  }
+      console.log(chalk.yellow(`building package:${pkg}`))
+      await bundle.write(outputConfig as OutputOptions)
+      console.log(`Success: ${(outputConfig as OutputOptions).file}`)
+    } catch (error) {
+      console.log(chalk.red(error))
+    }
+  })
 }
