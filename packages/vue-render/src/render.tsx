@@ -1,8 +1,18 @@
 import { defineComponent, ref } from 'vue-demi'
 
 export default defineComponent({
-  setup() {
-    const test = ref(0)
-    return () => <div>测试：{test.value}</div>
+  props: {
+    test1: {
+      type: String,
+      required: true,
+    },
+  },
+  setup(props) {
+    // const test = ref(0)
+    return () => (
+      <div>
+        测试: {props.test1}
+      </div>
+    )
   },
 })

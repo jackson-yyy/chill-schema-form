@@ -46,18 +46,21 @@ Vue packages version mismatch:
 - vue-template-compiler@2.6.14 (D:\workspace\chill-schema-form\node_modules\vue-template-compiler\package.json)
 ```
 
-因为vue-template-compiler和vue@3.x都被提升到了顶层，vue-template-compiler引用vue的时候，引用到了同级目录下的vue，导致报错
+因为vue-template-compiler和vue@3.x都被提升到了`root node_modules`，`vue-template-compiler`引用`vue`的时候，引用到了同级目录下的`vue`，导致报错
 
-使用pnpm workspace安装完成后，依赖关系如下:
+使用`pnpm workspace`安装完成后，依赖关系如下:
 
 ```
+node_modules
+├─.pnpm
+|  ├─xxx
 packages
 |  ├─demo
 |  |  ├─vue2
 |  |  │  ├─node_modules
 |  |  │  │  ├─.bin
-|  |  │  │  └─vue@2.6.14
-|  |  │  │  └─vue-template-compiler@2.6.14
+|  |  │  │  └─vue@2.6.14（硬链接到.pnpm下的vue@2.6.14）
+|  |  │  │  └─vue-template-compiler@2.6.14（硬链接到.pnpm下的vue-template-compiler@2.6.14）
 |  |  │  ├─public
 |  |  │  └─src
 |  |  │      ├─assets
@@ -65,7 +68,7 @@ packages
 |  |  └─vue3
 |  |     ├─node_modules
 |  |     │  └─.bin
-|  |  │  │  └─vue@3.1.5
+|  |  │  │  └─vue@3.1.5（硬链接到.pnpm下的vue@3.1.5）
 |  |     ├─public
 |  |     └─src
 |  |        ├─assets

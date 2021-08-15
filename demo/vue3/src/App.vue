@@ -1,15 +1,18 @@
 <template>
   <section>
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <img
+      alt="Vue logo"
+      src="./assets/logo.png"
+    >
     <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-    <FormRender />
+    <FormRender test1="x" />
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
-import { FormRender } from '@chill-schema-form/vue-render'
+import { FormRender } from 'vue-render'
 
 export default defineComponent({
   name: 'App',

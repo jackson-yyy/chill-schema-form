@@ -2,7 +2,7 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import filesize from 'rollup-plugin-filesize'
-import typescript from '@rollup/plugin-typescript'
+import typescript from 'rollup-plugin-typescript2'
 import { terser } from 'rollup-plugin-terser'
 
 import { RollupOptions, Plugin } from 'rollup'
@@ -31,6 +31,7 @@ export function getRollupConfig({ pkgRoot = '', output = 'index.js' }, config: R
       }),
       commonjs(),
       peerDepsExternal() as unknown as Plugin,
+
       ...plugins,
       typescript({
         tsconfig: path.join(pkgRoot, 'tsconfig.json'),

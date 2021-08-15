@@ -5,7 +5,7 @@
     "target": "ES6",
     "moduleResolution": "node",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "downlevelIteration": true,
     "importHelpers": true,
     "esModuleInterop": true,
