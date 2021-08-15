@@ -36,8 +36,8 @@ export function getRollupConfig({ pkgRoot = '', output = 'index.js' }, config: R
       typescript({
         tsconfig: path.join(pkgRoot, 'tsconfig.json'),
       }),
-      // terser(),
-      // filesize(),
+      terser(),
+      filesize(),
     ],
     output: {
       file: path.resolve(pkgRoot, `dist/${output}`),

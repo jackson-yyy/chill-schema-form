@@ -1,11 +1,11 @@
 {
   "version": "independent",
   "useWorkspaces": true,
-  "npmClient": "yarn",
+  "npmClient": "pnpm",
   "command": {
     "bootstrap": {
       "__comment": "开启shamefully-hoist：vue3.x依赖了@vue/shared、@vue/compiler-dom、@vue/runtime-dom，pnpm默认会将所有的依赖都提升到.pnpm里，导致vue-render打包的时候，vue找不到这三个包，有些模块（例如createVNode）找不到，导致打包失败",
-      "npmClientArgs": []
+      "npmClientArgs": ["--shamefully-hoist"]
     }
   }
 }
