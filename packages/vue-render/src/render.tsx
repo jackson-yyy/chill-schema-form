@@ -8,10 +8,11 @@ export default defineComponent({
     },
   },
   setup(props) {
-    // const test = ref(0)
+    // const test = ref([0])
     return () => (
       <div>
-        测试: {props.test1}
+        测试:
+        {props.test1}
       </div>
     )
   },
