@@ -1,21 +1,24 @@
 <template>
   <section>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="xx" />
-    <FormRender test1="123123" />
+    <FormRender :ui-schema="uiSchema" />
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent, ref } from '@vue/composition-api'
 import { FormRender } from '@chill-schema-form/vue-render'
+import * as Data from '../../common/uiSchems'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld,
     FormRender,
+  },
+  setup() {
+    const uiSchema = ref(Data.uiSchema)
+    return {
+      uiSchema,
+    }
   },
 })
 </script>

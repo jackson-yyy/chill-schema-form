@@ -22,5 +22,10 @@ module.exports = {
     semi: [2, 'never'],
 
     'import/no-extraneous-dependencies': 0,
+
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { args: 'after-used', argsIgnorePattern: '^_', ignoreRestSiblings: true },
+    ],
   },
 }
