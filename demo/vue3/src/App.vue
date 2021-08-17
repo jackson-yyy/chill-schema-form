@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
-import { FormRender } from 'vue-render'
+import { FormRender } from '@chill-schema-form/vue-render'
 
 export default defineComponent({
   name: 'App',

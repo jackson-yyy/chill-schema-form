@@ -1,10 +1,13 @@
 {
-  "version": "independent",
+  "version": "1.0.0",
   "useWorkspaces": true,
   "npmClient": "pnpm",
   "command": {
     "bootstrap": {
-      "__comment": "开启shamefully-hoist：vue3.x依赖了@vue/shared、@vue/compiler-dom、@vue/runtime-dom，pnpm默认会将所有的依赖都提升到.pnpm里，导致vue-render打包的时候，vue找不到这三个包，有些模块（例如createVNode）找不到，导致打包失败",
+      "__comment": [
+        "rollup-plugin-typescript2解析包依赖时，解析出的是软连接的地址，不是真实目录的地址，导致vue@3.x的找不到@vue，打包会报错，开启--shamefully-hoist后，将依赖全部提升到root node_modules，确保能访问到@vue",
+        "https://github.com/ezolenko/rollup-plugin-typescript2/issues/234"
+      ],
       "npmClientArgs": ["--shamefully-hoist"]
     }
   }
