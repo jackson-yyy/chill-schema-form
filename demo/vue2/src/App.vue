@@ -1,9 +1,6 @@
 <template>
   <section>
-    <img
-      alt="Vue logo"
-      src="./assets/logo.png"
-    >
+    <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="xx" />
     <FormRender test1="123123" />
   </section>
