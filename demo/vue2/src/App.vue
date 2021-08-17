@@ -5,14 +5,14 @@
       src="./assets/logo.png"
     >
     <HelloWorld msg="xx" />
-    <FormRender test1="123" />
+    <FormRender test1="123123" />
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import HelloWorld from './components/HelloWorld.vue'
-import { FormRender } from 'vue-render'
+import { FormRender } from '@chill-schema-form/vue-render'
 
 export default defineComponent({
   name: 'App',
