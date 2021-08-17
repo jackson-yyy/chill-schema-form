@@ -1,9 +1,6 @@
 <template>
   <section>
-    <img
-      alt="Vue logo"
-      src="./assets/logo.png"
-    >
+    <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
     <FormRender test1="x" />
   </section>
