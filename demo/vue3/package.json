@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@chill-schema-form/vue-render": "^1.0.0",
+    "ant-design-vue": "^2.2.6",
     "vue": "^3.0.5"
   }
 }

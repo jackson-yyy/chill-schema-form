@@ -33,6 +33,8 @@
     "url": "https://github.com/jackson-yyy/chill-schema-form/issues"
   },
   "dependencies": {
+    "lodash-es": "^4.17.21",
+    "ramda": "^0.27.1",
     "vue-demi": "latest"
   },
   "peerDependencies": {
@@ -45,9 +47,12 @@
     }
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.4",
+    "@types/ramda": "^0.27.44",
+    "@vue/composition-api": "^1.0.0-rc.1",
     "vue": "^3.0.5",
-    "vue3": "npm:vue@^3.0.5",
+    "vue-types": "^4.0.3",
     "vue2": "npm:vue@~2.6.14",
-    "@vue/composition-api": "^1.0.0-rc.1"
+    "vue3": "npm:vue@^3.0.5"
   }
 }
