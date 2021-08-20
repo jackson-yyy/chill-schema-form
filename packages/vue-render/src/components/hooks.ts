@@ -1,7 +1,7 @@
 import { computed, ComputedRef, shallowRef } from 'vue-demi'
 import { isFunction } from 'lodash-es'
 
-import type { FunctionalAttr, UiSchema } from './types'
+import type { FunctionalAttr, UiSchema } from '../types'
 
 export function useFunctionalAttr<T extends unknown, K extends unknown>(
   formData: Record<string, any>,
