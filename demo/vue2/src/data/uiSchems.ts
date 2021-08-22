@@ -1,4 +1,4 @@
-import { Input } from 'ant-design-vue'
+// import { Input } from 'ant-design-vue'
 
 export const uiSchema = {
   widget: 'div',
@@ -10,7 +10,7 @@ export const uiSchema = {
   },
   children: [
     {
-      widget: Input,
+      widget: 'input',
       filed: 'test',
       attrs: {
         placeholder: 'xxxxx',
