@@ -28,7 +28,9 @@
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@types/fs-extra": "^9.0.12",
+    "@types/lodash-es": "^4.17.4",
     "@types/node": "^16.4.6",
+    "@types/ramda": "^0.27.44",
     "@types/rollup-plugin-peer-deps-external": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
@@ -36,6 +38,7 @@
     "@vitejs/plugin-vue-jsx": "^1.1.7",
     "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/compiler-sfc": "^3.0.5",
+    "@vue/composition-api": "^1.0.0-rc.1",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^1.2.2",
     "chalk": "^4.1.1",
@@ -78,10 +81,11 @@
     }
   },
   "dependencies": {
-    "@chill-schema-form/core": "file:packages\\core",
-    "@chill-schema-form/demo-vue2": "file:demo\\vue2",
-    "@chill-schema-form/demo-vue3": "file:demo\\vue3",
-    "@chill-schema-form/eslint-config": "file:configs\\eslint-config",
-    "@chill-schema-form/stylelint-config": "file:configs\\stylelint-config"
+    "@chill-schema-form/core": "file:packages/core",
+    "@chill-schema-form/demo-vue2": "file:demo/vue2",
+    "@chill-schema-form/demo-vue3": "file:demo/vue3",
+    "@chill-schema-form/eslint-config": "file:configs/eslint-config",
+    "@chill-schema-form/stylelint-config": "file:configs/stylelint-config",
+    "@chill-schema-form/vue-render": "file:packages/vue-render"
   }
 }

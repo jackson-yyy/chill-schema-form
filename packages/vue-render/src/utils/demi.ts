@@ -1,5 +1,5 @@
 import { isFunction, upperFirst } from 'lodash-es'
-import { h as hDemi, isVue2, VNode } from 'vue-demi'
+import { h as hDemi, isVue2 } from 'vue-demi'
 
 type OptPass = {
   attrs?:
