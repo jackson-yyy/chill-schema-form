@@ -7,6 +7,7 @@ import { terser } from 'rollup-plugin-terser'
 
 import { RollupOptions, Plugin } from 'rollup'
 import path from 'path'
+import { getPkgRoot } from './utils'
 
 const extensions = ['.js', '.ts', '.tsx', '.vue']
 
@@ -21,29 +22,34 @@ const extensions = ['.js', '.ts', '.tsx', '.vue']
 //   }))
 // }
 
-export function getRollupConfig({ pkgRoot = '', output = 'index.js' }, config: RollupOptions = {}): RollupOptions {
+export function getRollupConfig({ pkg = '', output = 'index.js' }, config: RollupOptions = {}): RollupOptions[] {
+  const pkgRoot = getPkgRoot(pkg)
   const { plugins = [], ...others } = config
-  return {
-    input: path.resolve(pkgRoot, 'src/index.ts'),
-    plugins: [
-      nodeResolve({
-        extensions,
-      }),
-      commonjs(),
-      peerDepsExternal() as unknown as Plugin,
+  return [
+    {
+      input: path.resolve(pkgRoot, 'src/index.ts'),
+      plugins: [
+        nodeResolve({
+          extensions,
+        }),
+        commonjs(),
+        peerDepsExternal() as unknown as Plugin,
 
-      ...plugins,
-      typescript({
-        tsconfig: path.join(pkgRoot, 'tsconfig.json'),
-      }),
-      terser(),
-      filesize(),
-    ],
-    output: {
-      file: path.resolve(pkgRoot, `dist/${output}`),
-      format: 'es',
-      exports: 'named',
+        ...plugins,
+        typescript({
+          tsconfigOverride: {
+            include: [`packages/${pkg}/src/**/*`],
+          },
+        }),
+        terser(),
+        filesize(),
+      ],
+      output: {
+        file: path.resolve(pkgRoot, output),
+        format: 'es',
+        exports: 'named',
+      },
+      ...others,
     },
-    ...others,
-  }
+  ]
 }

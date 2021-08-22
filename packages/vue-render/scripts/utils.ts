@@ -1,11 +1,11 @@
-import execa from "execa"
-import { unlink, symlink } from "fs/promises"
-import path from "path"
+import execa from 'execa'
+import { unlink, symlink } from 'fs/promises'
+import path from 'path'
 
 const nodeModulesRoot = path.resolve(__dirname, '..', 'node_modules')
 const vueRoot = path.join(nodeModulesRoot, 'vue')
 
-export async function switchVueVersion (version: string) {
+export async function switchVueVersion(version: string) {
   try {
     await unlink(vueRoot)
   } catch (error) {
@@ -22,14 +22,13 @@ export async function switchVueVersion (version: string) {
   await execa('vue-demi-switch', [version])
 
   console.log(`[@chill-schema-form/vue-render] Switched to Version ${version}`)
-  
 }
 
 export async function fixVueVersion() {
-  const packageJson = require("../package.json")
+  const packageJson = require('../package.json')
   const reg = /[^\d]?(\d).*/
   const vueVersion = packageJson.devDependencies.vue as string
   vueVersion.match(reg)
-  
+
   switchVueVersion(RegExp.$1)
 }

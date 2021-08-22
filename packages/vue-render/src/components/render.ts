@@ -28,5 +28,5 @@ function renderChild(uiSchema: UiSchema, formData: Record<string, any>): ReturnT
 }
 
 export default function (props: RenderProps) {
-  return props.uiSchema ? renderChild(props.uiSchema, props.formData) : null
+  return props.uiSchema ? renderChild(props.uiSchema, props.formData ?? {}) : null
 }
