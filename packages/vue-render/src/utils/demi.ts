@@ -1,10 +1,10 @@
 import { isFunction, upperFirst } from 'lodash-es'
-import { h as hDemi, isVue2, VNode } from 'vue-demi'
+import { h as hDemi, isVue2 } from 'vue-demi'
 
 type OptPass = {
   attrs?:
     | Record<string, any> & {
-        style?: CSSStyleDeclaration
+        style?: Record<string, string | number>
         class?: string | string[]
       }
 
@@ -44,7 +44,7 @@ export function h(type: any, opt: OptPass, children: any = '') {
     },
     {
       default: () => children,
-    },
+    } as any,
   )
 }
 

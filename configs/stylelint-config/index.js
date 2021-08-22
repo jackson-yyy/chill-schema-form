@@ -7,5 +7,4 @@ module.exports = {
     'no-invalid-double-slash-comments': null,
     'no-descending-specificity': null,
   },
-  ignoreFiles: ['dist/**/*.less'],
 }

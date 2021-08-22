@@ -1,6 +1,6 @@
 import Vue3JsxPlugin from '@vitejs/plugin-vue-jsx'
 import { createVuePlugin } from 'vite-plugin-vue2'
-import { build, cleanDist } from './utils'
+import { build, buildDts, cleanDist } from './utils'
 import execa from 'execa'
 
 async function buildVueRender() {
@@ -15,18 +15,20 @@ async function buildVueRender() {
 
   // vue3
   await build(
-    { pkg, output: 'v3/index.js', clean: false },
+    { pkg, output: 'dist/v3/index.js', clean: false },
     {
       plugins: [Vue3JsxPlugin()],
       external,
     },
   )
 
+  await buildDts({ pkg, input: 'dist/v3/index.d.ts', output: 'dist/v3/index.d.ts' })
+
   await execa('lerna', ['run', 'switch:vue2', ...scopeArgs], { stdout: 'inherit' })
 
   // vue2
   await build(
-    { pkg, output: 'v2/index.js', clean: false },
+    { pkg, output: 'dist/v2/index.js', clean: false },
     {
       plugins: [
         createVuePlugin({
@@ -40,8 +42,10 @@ async function buildVueRender() {
     },
   )
 
+  await buildDts({ pkg, input: 'dist/v2/index.d.ts', output: 'dist/v2/index.d.ts' })
+
   await execa('lerna', ['run', 'reset:version', ...scopeArgs], { stdout: 'inherit' })
 }
 
-build({ pkg: 'core' })
+build({ pkg: 'core', buildDeclaration: true })
 buildVueRender()
