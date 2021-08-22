@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import { createVuePlugin } from 'vite-plugin-vue2'
 
@@ -16,7 +17,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@chill-schema-form/vue-render': '../../../packages/vue-render/src/index',
+      '@chill-schema-form/vue-render': resolve(__dirname, './node_modules/@chill-schema-form/vue-render/src/index'),
     },
   },
 })

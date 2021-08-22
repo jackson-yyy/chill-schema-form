@@ -9,7 +9,7 @@ export type UiSchema = {
   // 组件attrs
   attrs?: FunctionalAttr<
     | Record<string, any> & {
-        style?: CSSStyleDeclaration
+        style?: Record<string, string | number>
         class?: string | string[]
       }
   >
