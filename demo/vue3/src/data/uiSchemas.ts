@@ -1,4 +1,4 @@
-import { Input } from 'ant-design-vue'
+import { IxInput } from '@idux/components/input'
 import type { UiSchema } from '@chill-schema-form/vue-render'
 
 export const uiSchema: UiSchema = {
@@ -11,7 +11,7 @@ export const uiSchema: UiSchema = {
   },
   children: [
     {
-      widget: Input,
+      widget: IxInput,
       filed: 'test',
       attrs: {
         placeholder: 'xxxxx',
@@ -39,6 +39,21 @@ export const uiSchema: UiSchema = {
           console.log('change', e)
         },
       },
+    },
+    {
+      widget: 'div',
+      children: [
+        {
+          widget: 'h1',
+          children: ['标题1'],
+        },
+        {
+          widget: 'textarea',
+          attrs: {
+            placeholder: 'xxxxx',
+          },
+        },
+      ],
     },
   ],
 }

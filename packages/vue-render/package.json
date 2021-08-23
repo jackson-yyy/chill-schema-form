@@ -50,6 +50,8 @@
     "@types/lodash-es": "^4.17.4",
     "@types/ramda": "^0.27.44",
     "@vue/composition-api": "^1.0.0-rc.1",
+    "@vue/runtime-core": "^3.2.4",
+    "@vue/runtime-dom": "^3.2.4",
     "vue": "^3.0.5",
     "vue-types": "^4.0.3",
     "vue2": "npm:vue@~2.6.14",

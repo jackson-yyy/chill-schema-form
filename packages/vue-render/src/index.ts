@@ -1,5 +1,3 @@
-import FormRender from './components/render'
+export {default as FormRender}from './components/render'
 
-export { FormRender }
-
-export type { UiSchema, Schema } from './types'
+export type { UiSchema, Schema, RenderProps } from './types'
