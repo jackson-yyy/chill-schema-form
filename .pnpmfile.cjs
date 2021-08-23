@@ -15,6 +15,14 @@ function readPackage(pkg, context) {
     }
   }
 
+  if (pkg.name === '@vue/test-utils') {
+    pkg.dependencies = {
+      ...pkg.dependencies,
+      vue: '~2.6.14',
+      'vue-template-compiler': '^2.x',
+    }
+  }
+
   return pkg
 }
 

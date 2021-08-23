@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "paths": {
-      "@chill-schema-form/vue-render": ["./node_modules/@chill-schema-form/vue-render/src/index"]
+      "@chill-schema-form/vue-render": ["../../packages/vue-render/src/index.ts"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
