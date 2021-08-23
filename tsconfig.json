@@ -17,7 +17,12 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "@chill-schema-form/core": ["packages/core/src/index.ts"],
+      "@chill-schema-form/vue-render": ["packages/vue-render/src/index.ts"]
+    }
   },
+
   "exclude": ["**/node_modules/*", "**/dist/*"]
 }
