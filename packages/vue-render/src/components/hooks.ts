@@ -1,33 +1,49 @@
-import { computed, ComputedRef, shallowRef } from 'vue-demi'
-import { isFunction } from 'lodash-es'
+import { computed, isVue2, reactive } from 'vue-demi'
+import { get, isFunction, set } from 'lodash-es'
 
-import type { FunctionalAttr, UiSchema } from '../types'
+import type { FunctionalAttr, UiSchema } from '@chill-schema-form/core'
 
-export function useFunctionalAttr<T extends unknown, K extends unknown>(
+function getFunctionalAttr<T extends unknown, K extends unknown>(
   formData: Record<string, any>,
   value: K,
   attr?: FunctionalAttr<T>,
-): ComputedRef<T | undefined> {
-  const shallowAttr = shallowRef(attr)
-  return computed(() => {
-    if (isFunction(shallowAttr.value)) {
-      return shallowAttr.value(formData, value)
-    }
-    return shallowAttr.value
-  })
+): T | undefined {
+  if (isFunction(attr)) {
+    return attr(formData, value)
+  }
+  return attr
 }
 
-export function normalizeUiSchema(uiSchema: UiSchema, formData: Record<string, any>) {
-  const widget = useFunctionalAttr(formData, uiSchema.filed, uiSchema.widget)
-  const hidden = useFunctionalAttr(formData, uiSchema.filed, uiSchema.hidden)
-  const attrs = useFunctionalAttr(formData, uiSchema.filed, uiSchema.attrs)
-  const children = useFunctionalAttr(formData, uiSchema.filed, uiSchema.children)
+export function normalizeUiSchema(uiSchema: UiSchema, controller: DataController) {
+  const formData = controller.getValue() as Record<string, any>
+  const value = controller.getValue(uiSchema.filed)
 
   return computed(() => ({
     ...uiSchema,
-    widget: widget.value,
-    hidden: hidden.value,
-    attrs: attrs.value,
-    children: children.value,
+    modelEvt: uiSchema.modelEvt ?? (isVue2 ? 'input' : 'update:value'),
+    widget: getFunctionalAttr(formData, value, uiSchema.widget),
+    hidden: getFunctionalAttr(formData, value, uiSchema.hidden),
+    attrs: getFunctionalAttr(formData, value, uiSchema.attrs),
+    children: getFunctionalAttr(formData, value, uiSchema.children),
   }))
+}
+
+export type DataController = {
+  setValue: <K extends unknown>(path: string, value: K) => void
+  getValue: <T extends unknown>(path?: string) => T | Record<string, any>
+  getErrors: (path: string) => Record<string, any>
+}
+
+export function useDataController(defaultData: Record<string, any>): DataController {
+  const formData = reactive(defaultData)
+
+  const setValue = (path: string, value: any) => set(formData, path, value)
+  const getValue = (path?: string) => (path ? get(formData, path) : formData)
+  const getErrors = (path?: string) => (path ? get(formData, path) : formData)
+
+  return {
+    setValue,
+    getValue,
+    getErrors,
+  }
 }

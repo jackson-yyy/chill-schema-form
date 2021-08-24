@@ -33,6 +33,7 @@
     "url": "https://github.com/jackson-yyy/chill-schema-form/issues"
   },
   "dependencies": {
+    "@chill-schema-form/core": "file:..\\core",
     "lodash-es": "^4.17.21",
     "ramda": "^0.27.1",
     "vue-demi": "latest"

@@ -1,5 +1,5 @@
-import { Input } from 'ant-design-vue'
-import type { UiSchema } from '@chill-schema-form/vue-render'
+import type { UiSchema } from '@chill-schema-form/core'
+import { IxInput, IxTextarea } from '@idux/components/input'
 
 export const uiSchema: UiSchema = {
   widget: 'div',
@@ -11,7 +11,7 @@ export const uiSchema: UiSchema = {
   },
   children: [
     {
-      widget: Input,
+      widget: (formData, value) => (formData.test1 === '1' && value === '1' ? IxInput : IxTextarea),
       filed: 'test',
       attrs: {
         placeholder: 'xxxxx',
@@ -26,8 +26,8 @@ export const uiSchema: UiSchema = {
       },
     },
     {
-      widget: 'input',
-      filed: 'test',
+      widget: IxInput,
+      filed: 'test1',
       attrs: {
         placeholder: 'xxxxx',
       },

@@ -1,4 +1,4 @@
-import { Schema, UiSchema } from './schema'
+import { Schema, UiSchema } from '@chill-schema-form/core'
 
 export type RenderProps = {
   schema?: Schema
