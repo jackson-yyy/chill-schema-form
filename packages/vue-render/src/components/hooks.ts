@@ -15,17 +15,19 @@ function getFunctionalAttr<T extends unknown, K extends unknown>(
 }
 
 export function normalizeUiSchema(uiSchema: UiSchema, controller: DataController) {
-  const formData = controller.getValue() as Record<string, any>
-  const value = controller.getValue(uiSchema.filed)
+  return computed(() => {
+    const formData = controller.getValue() as Record<string, any>
+    const value = controller.getValue(uiSchema.filed)
 
-  return computed(() => ({
-    ...uiSchema,
-    modelEvt: uiSchema.modelEvt ?? (isVue2 ? 'input' : 'update:value'),
-    widget: getFunctionalAttr(formData, value, uiSchema.widget),
-    hidden: getFunctionalAttr(formData, value, uiSchema.hidden),
-    attrs: getFunctionalAttr(formData, value, uiSchema.attrs),
-    children: getFunctionalAttr(formData, value, uiSchema.children),
-  }))
+    return {
+      ...uiSchema,
+      modelEvt: uiSchema.modelEvt ?? (isVue2 ? 'input' : 'update:value'),
+      widget: getFunctionalAttr(formData, value, uiSchema.widget),
+      hidden: getFunctionalAttr(formData, value, uiSchema.hidden),
+      attrs: getFunctionalAttr(formData, value, uiSchema.attrs),
+      children: getFunctionalAttr(formData, value, uiSchema.children),
+    }
+  })
 }
 
 export type DataController = {
