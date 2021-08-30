@@ -1,4 +1,4 @@
-// import { Input } from 'ant-design-vue'
+import { Input } from 'ant-design-vue'
 
 export const uiSchema = {
   widget: 'div',
@@ -10,11 +10,12 @@ export const uiSchema = {
   },
   children: [
     {
-      widget: 'input',
+      widget: (formData, value) => (formData.test1 === '1' && value === '1' ? Input : Input.TextArea),
       filed: 'test',
       attrs: {
         placeholder: 'xxxxx',
       },
+      modelEvt: 'change.value',
       on: {
         input(e) {
           console.log('input', e)
@@ -25,8 +26,9 @@ export const uiSchema = {
       },
     },
     {
-      widget: 'input',
-      filed: 'test',
+      widget: Input,
+      filed: 'test1',
+      modelEvt: 'change.value',
       attrs: {
         placeholder: 'xxxxx',
       },

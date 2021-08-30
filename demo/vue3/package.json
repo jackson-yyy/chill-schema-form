@@ -12,7 +12,9 @@
     "precommit": "lint-staged --no-stash"
   },
   "dependencies": {
+    "@chill-schema-form/core": "file:..\\..\\packages\\core",
     "@chill-schema-form/vue-render": "file:../../packages/vue-render",
+    "@idux/components": "^0.2.0",
     "ant-design-vue": "^2.2.6",
     "vue": "^3.0.5"
   }

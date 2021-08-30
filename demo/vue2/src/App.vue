@@ -1,15 +1,19 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { FormRender } from '@chill-schema-form/vue-render'
+import { useFormRender } from '@chill-schema-form/vue-render'
 import * as Data from './data/uiSchems'
 
 export default defineComponent({
   name: 'App',
   setup() {
-    return () =>
-      FormRender({
-        uiSchema: Data.uiSchema,
-      })
+    const { renderer } = useFormRender({
+      uiSchema: Data.uiSchema,
+      formData: {
+        test: '123',
+        test1: '',
+      },
+    })
+    return renderer
   },
 })
 </script>
