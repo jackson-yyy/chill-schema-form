@@ -2,32 +2,44 @@ import { DataController, normalizeUiSchema, useDataController } from './hooks'
 import { isString } from 'lodash-es'
 import { h } from '../utils/demi'
 import type { RenderProps, UiSchema } from '../types'
-import { VNode } from 'vue-demi'
+import { VNode, defineComponent, DefineComponent } from 'vue-demi'
+import { object } from 'vue-types'
 
-function renderChild(uiSchema: UiSchema, controller: DataController): ReturnType<typeof h> | null {
-  const _uiSchema = normalizeUiSchema(uiSchema, controller)
-
-  return _uiSchema.value.hidden
-    ? null
-    : h(
-        _uiSchema.value.widget || 'div',
-        {
-          attrs: {
-            ..._uiSchema.value.attrs,
-            value: controller.getValue(uiSchema.filed),
-          },
-          on: {
-            ..._uiSchema.value.on,
-            [_uiSchema.value.modelEvt!](value: any) {
-              _uiSchema.value.filed && controller.setValue(_uiSchema.value.filed, value)
-
-              _uiSchema.value.on?.[_uiSchema.value.modelEvt!]?.(value)
-            },
-          },
-        },
-        _uiSchema.value.children?.map(item => (isString(item) ? item : renderChild(item, controller))),
-      )
+const childProps = {
+  uiSchema: object<UiSchema>().isRequired,
+  dataController: object<DataController>().isRequired,
 }
+
+const Child: DefineComponent<typeof childProps> = defineComponent({
+  props: childProps,
+  setup(props) {
+    const _uiSchema = normalizeUiSchema(props.uiSchema, props.dataController)
+
+    return () =>
+      _uiSchema.value.hidden
+        ? null
+        : h(
+            _uiSchema.value.widget || 'div',
+            {
+              attrs: {
+                ..._uiSchema.value.attrs,
+                value: props.dataController.getValue(_uiSchema.value.filed),
+              },
+              on: {
+                ..._uiSchema.value.on,
+                [_uiSchema.value.modelEvt!](value: any) {
+                  _uiSchema.value.filed && props.dataController.setValue(_uiSchema.value.filed, value)
+
+                  _uiSchema.value.on?.[_uiSchema.value.modelEvt!]?.(value)
+                },
+              },
+            },
+            _uiSchema.value.children?.map(item =>
+              isString(item) ? item : h(Child, { attrs: { uiSchema: item, dataController: props.dataController } }),
+            ),
+          )
+  },
+})
 
 export function useFormRender(props: RenderProps): {
   renderer: () => VNode | null
@@ -36,7 +48,7 @@ export function useFormRender(props: RenderProps): {
 } {
   const dataController = useDataController(props.formData ?? {})
 
-  const renderer = () => (props.uiSchema ? renderChild(props.uiSchema, dataController) : null)
+  const renderer = () => (props.uiSchema ? h(Child, { attrs: { uiSchema: props.uiSchema, dataController } }) : null)
 
   return {
     renderer,
